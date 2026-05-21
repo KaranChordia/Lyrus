@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lyrus | Regulatory AI Agent</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="app-container">
+      
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <img src="https://www.lyruslife.com/wp-content/uploads/2016/11/Lyrus-Logo-150-x-80-2-1.png" alt="Lyrus Logo" class="logo">
+          <span class="agent-badge">AI Agent POC</span>
+        </div>
+        
+        <div class="control-panel">
+          <div class="form-group">
+            <label>Target Molecule</label>
+            <select id="molecule-select">
+              <option value="methenamine">Methenamine Hippurate</option>
+              <option value="curcumin">Curcuminoids (Nanonized)</option>
+              <option value="diclofenac">Diclofenac Emulgel</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Regulatory Authority</label>
+            <select id="authority-select">
+              <option value="fda">US FDA (eCTD Format)</option>
+              <option value="mhra">MHRA (UK)</option>
+              <option value="tga">TGA (Australia)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Raw Lab Data Inputs</label>
+            <div class="upload-zone" id="upload-zone">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+              <span>Drag & drop chromatograms, stability matrices, or LIMS data</span>
+              <small>Simulated: 3 files loaded</small>
+            </div>
+          </div>
+
+          <button id="generate-btn" class="btn-generate">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+            Generate eCTD Module 3
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="main-header">
+          <h2>Regulatory Dossier Synthesizer</h2>
+          <div class="status-indicator">
+            <span class="dot" id="status-dot"></span>
+            <span id="status-text">System Idle</span>
+          </div>
+        </header>
+
+        <div class="workspace">
+          <!-- Terminal / Processing view -->
+          <div class="terminal" id="terminal" style="display: none;">
+            <div class="terminal-header">
+              <span>Agent Execution Log</span>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+              <!-- Logs injected here -->
+            </div>
+          </div>
+
+          <!-- Document Editor / Output view -->
+          <div class="document-viewer" id="document-viewer">
+            <div class="document-header">
+              <span class="doc-title">Draft_Module_3_CMC.md</span>
+              <button class="btn-export" disabled id="export-btn">Export PDF</button>
+            </div>
+            <div class="document-body">
+              <div class="placeholder-text" id="placeholder-text">
+                Configure parameters and click "Generate" to synthesize regulatory documentation from raw lab data.
+              </div>
+              <div class="typewriter-content" id="output-content">
+                <!-- AI text streams here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

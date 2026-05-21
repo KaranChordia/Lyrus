@@ -1,0 +1,73 @@
+:root {
+  --bg-dark: #0f172a;
+  --bg-panel: #1e293b;
+  --bg-workspace: #f8fafc;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-doc: #334155;
+  --brand-blue: #0ea5e9;
+  --brand-blue-hover: #0284c7;
+  --brand-orange: #de4528;
+  --border-color: #334155;
+  --success: #10b981;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background-color: var(--bg-workspace); color: var(--text-doc); height: 100vh; overflow: hidden; }
+
+.app-container { display: flex; height: 100vh; }
+
+/* Sidebar */
+.sidebar { width: 320px; background-color: var(--bg-dark); color: var(--text-main); display: flex; flex-direction: column; border-right: 1px solid var(--border-color); }
+.sidebar-header { padding: 1.5rem; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; justify-content: space-between; }
+.logo { height: 28px; filter: brightness(0) invert(1); }
+.agent-badge { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; background-color: rgba(14, 165, 233, 0.2); color: var(--brand-blue); padding: 0.2rem 0.5rem; border-radius: 4px; border: 1px solid var(--brand-blue); }
+
+.control-panel { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; gap: 1.5rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+.form-group label { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); }
+select { background-color: var(--bg-panel); color: var(--text-main); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 6px; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; }
+select:focus { border-color: var(--brand-blue); }
+
+.upload-zone { background-color: var(--bg-panel); border: 1px dashed var(--border-color); border-radius: 6px; padding: 1.5rem 1rem; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--text-muted); cursor: pointer; transition: all 0.2s ease; }
+.upload-zone:hover { border-color: var(--brand-blue); background-color: rgba(14, 165, 233, 0.05); }
+.upload-zone span { font-size: 0.85rem; line-height: 1.4; }
+.upload-zone small { font-size: 0.75rem; color: var(--success); font-weight: 500; margin-top: 0.5rem; }
+
+.btn-generate { margin-top: auto; background-color: var(--brand-blue); color: white; border: none; padding: 1rem; border-radius: 6px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: background-color 0.2s ease; }
+.btn-generate:hover { background-color: var(--brand-blue-hover); }
+.btn-generate:disabled { background-color: var(--text-muted); cursor: not-allowed; }
+
+/* Main Content */
+.main-content { flex: 1; display: flex; flex-direction: column; background-color: var(--bg-workspace); }
+.main-header { padding: 1.5rem 2rem; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; background-color: white; }
+.main-header h2 { font-size: 1.25rem; color: var(--bg-dark); }
+.status-indicator { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; font-weight: 500; color: var(--text-muted); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--text-muted); transition: background-color 0.3s ease; }
+.dot.active { background-color: var(--brand-blue); box-shadow: 0 0 8px var(--brand-blue); animation: pulse 1.5s infinite; }
+@keyframes pulse { 0% { transform: scale(0.95); opacity: 0.8; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(0.95); opacity: 0.8; } }
+
+.workspace { flex: 1; padding: 2rem; display: flex; flex-direction: column; gap: 2rem; overflow-y: auto; }
+
+/* Terminal Logs */
+.terminal { background-color: var(--bg-dark); border-radius: 8px; border: 1px solid var(--border-color); overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); flex-shrink: 0; }
+.terminal-header { background-color: var(--bg-panel); padding: 0.5rem 1rem; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; color: var(--text-muted); border-bottom: 1px solid var(--border-color); }
+.terminal-body { padding: 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #a3be8c; max-height: 150px; overflow-y: auto; line-height: 1.5; }
+.log-line { margin-bottom: 0.25rem; opacity: 0; animation: fadeIn 0.3s forwards; }
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* Document Viewer */
+.document-viewer { flex: 1; background-color: white; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; overflow: hidden; min-height: 400px; }
+.document-header { padding: 1rem 1.5rem; border-bottom: 1px solid #e2e8f0; background-color: #f8fafc; display: flex; justify-content: space-between; align-items: center; }
+.doc-title { font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-muted); }
+.btn-export { background-color: white; border: 1px solid #cbd5e1; color: var(--text-doc); padding: 0.4rem 1rem; border-radius: 4px; font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.2s ease; }
+.btn-export:not(:disabled):hover { border-color: var(--brand-blue); color: var(--brand-blue); }
+.btn-export:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.document-body { padding: 3rem; flex: 1; overflow-y: auto; font-size: 1rem; line-height: 1.7; position: relative; }
+.placeholder-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #94a3b8; text-align: center; max-width: 300px; }
+.typewriter-content { white-space: pre-wrap; font-family: 'Inter', sans-serif; color: var(--text-doc); }
+.typewriter-content h1, .typewriter-content h2, .typewriter-content h3 { color: var(--bg-dark); margin-top: 1.5rem; margin-bottom: 0.75rem; }
+.typewriter-content p { margin-bottom: 1rem; }
+.cursor { display: inline-block; width: 8px; height: 1em; background-color: var(--brand-blue); animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 2px; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
