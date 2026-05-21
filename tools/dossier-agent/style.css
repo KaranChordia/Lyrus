@@ -71,3 +71,13 @@ select:focus { border-color: var(--brand-blue); }
 .typewriter-content p { margin-bottom: 1rem; }
 .cursor { display: inline-block; width: 8px; height: 1em; background-color: var(--brand-blue); animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 2px; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  body { height: auto; overflow: auto; }
+  .app-container { flex-direction: column; height: auto; }
+  .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border-color); }
+  .main-content { min-height: 80vh; }
+  .workspace { padding: 1rem; }
+  .document-body { padding: 1.5rem; }
+}

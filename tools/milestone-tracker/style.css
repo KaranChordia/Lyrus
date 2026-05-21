@@ -83,3 +83,15 @@ body { font-family: 'Inter', sans-serif; background-color: var(--bg-app); color:
 
 .btn-primary { background-color: var(--text-main); color: white; border: none; padding: 0.75rem 2rem; border-radius: 6px; font-weight: 600; cursor: pointer; transition: background-color 0.2s; width: 100%; }
 .btn-primary:hover { background-color: black; }
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .topbar { padding: 0 1rem; }
+  .system-name { display: none; }
+  .dashboard { padding: 2rem 1rem; }
+  .dash-header h2 { font-size: 1.5rem; }
+  .project-card { padding: 1.5rem 1rem; }
+  .modal-content { padding: 2rem 1.5rem; width: 95%; }
+  .invoice-details { padding: 1rem; }
+  .finance-alert { font-size: 0.75rem; padding: 0.4rem 0.75rem; }
+}
