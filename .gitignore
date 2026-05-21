@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Node/Vite (if used later)
+node_modules/
+dist/
+.env
+.env.local
+
+# Python servers (if generating bytecode)
+__pycache__/
+*.pyc
+
+# IDEs
+.idea/
+.vscode/
