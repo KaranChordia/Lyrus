@@ -58,4 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.remove('nav-scrolled');
         }
     });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    }
 });

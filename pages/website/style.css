@@ -217,10 +217,42 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
   .infra-list { align-items: center; }
   .pipeline-stats { width: 100%; justify-content: space-around; flex-wrap: wrap;}
 }
+
+.mobile-menu-btn { display: none; }
+
 @media (max-width: 768px) {
-  .nav-links { display: none; }
+  .mobile-menu-btn { display: flex; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-primary);
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    margin-top: 0.5rem;
+    align-items: center;
+  }
+  .nav-links.active {
+    display: flex;
+  }
   .navbar { border-radius: 8px; width: 95%; }
   .navbar.nav-scrolled { width: 95%; border-radius: 8px; }
+  
+  /* Reduce padding for mobile */
+  .hero { padding: 8rem 1.5rem 4rem 1.5rem; }
+  .services, .infrastructure, .global-reach, .page-section { padding: 4rem 1.5rem; }
+  .page-header { padding: 8rem 1.5rem 2rem 1.5rem; }
+  
+  /* Scale down parallax drug elements */
+  .pill-shape { width: 25px; height: 60px; }
+  .tablet-shape { width: 40px; height: 40px; }
+
   .footer-container { flex-direction: column; text-align: center; }
   .footer-links p { text-align: center; }
 }
