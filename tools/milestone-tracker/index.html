@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lyrus | Milestone Tracker</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- Top Navigation Bar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <a href="../index.html" class="back-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </a>
+        <div class="brand-divider"></div>
+        <span class="system-name">Milestone & Invoicing Portal</span>
+      </div>
+      <div class="topbar-right">
+        <div class="finance-alert" id="finance-alert" style="display: none;">
+          <span class="alert-pulse"></span>
+          Invoice Sent to Finance
+        </div>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <div class="dash-header">
+        <h2>Active R&D Projects</h2>
+        <p>Complete milestones to automatically trigger billing and reduce Gross Current Asset cycles.</p>
+      </div>
+
+      <div class="projects-list">
+        
+        <!-- Project Card 1 -->
+        <div class="project-card">
+          <div class="project-info">
+            <span class="client-tag">NOUMED UK</span>
+            <h3>Methenamine Hippurate Formulation</h3>
+            <p>Phase: Analytical Validation</p>
+          </div>
+          
+          <div class="milestone-track">
+            <div class="milestone completed">
+              <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              <span>API Sourcing</span>
+            </div>
+            <div class="track-line completed"></div>
+            
+            <div class="milestone completed">
+              <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              <span>Lab Batches</span>
+            </div>
+            <div class="track-line"></div>
+            
+            <div class="milestone pending" id="milestone-target">
+              <button class="btn-complete" id="trigger-btn">Complete Milestone</button>
+              <span>6-Month Stability</span>
+            </div>
+            <div class="track-line"></div>
+            
+            <div class="milestone locked">
+              <div class="node"></div>
+              <span>Dossier Filing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Card 2 -->
+        <div class="project-card">
+          <div class="project-info">
+            <span class="client-tag">INTERNAL IP</span>
+            <h3>Diclofenac Emulgel NDDS</h3>
+            <p>Phase: Formulation Optimization</p>
+          </div>
+          
+          <div class="milestone-track">
+            <div class="milestone completed">
+              <div class="node"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+              <span>API Sourcing</span>
+            </div>
+            <div class="track-line"></div>
+            
+            <div class="milestone pending">
+              <button class="btn-complete disabled">Complete Milestone</button>
+              <span>Lab Batches</span>
+            </div>
+            <div class="track-line"></div>
+            
+            <div class="milestone locked">
+              <div class="node"></div>
+              <span>6-Month Stability</span>
+            </div>
+            <div class="track-line"></div>
+            
+            <div class="milestone locked">
+              <div class="node"></div>
+              <span>Dossier Filing</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Modal (Hidden by default) -->
+      <div class="modal-overlay" id="invoice-modal">
+        <div class="modal-content">
+          <div class="modal-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg>
+          </div>
+          <h2>Milestone Verified!</h2>
+          <p>6-Month Accelerated Stability data has been confirmed.</p>
+          
+          <div class="invoice-details">
+            <div class="detail-row"><span>Client:</span> <strong>Noumed UK</strong></div>
+            <div class="detail-row"><span>Milestone Invoice:</span> <strong>$150,000 USD</strong></div>
+            <div class="detail-row"><span>Action:</span> <strong style="color: #0ea5e9;">Auto-routing to Finance Dept...</strong></div>
+          </div>
+
+          <button class="btn-primary" id="close-modal-btn">Dismiss & Return</button>
+        </div>
+      </div>
+
+    </main>
+    <script src="./app.js"></script>
+  </body>
+</html>
