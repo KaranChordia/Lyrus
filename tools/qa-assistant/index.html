@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QA Compliance Assistant</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <a href="../index.html" class="back-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </a>
+          <span class="agent-badge">QA Agent POC</span>
+        </div>
+        
+        <div class="control-panel">
+          <div class="form-group">
+            <label>Select Batch Record (PDF)</label>
+            <div class="upload-zone" id="upload-zone">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              <span>Batch_MH_8821_Final.pdf</span>
+              <small>Simulated: File loaded</small>
+            </div>
+          </div>
+
+          <button id="scan-btn" class="btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            Run cGMP Compliance Scan
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header class="main-header">
+          <h2>QA Batch Record Scanner</h2>
+          <div class="status-indicator">
+            <span class="dot" id="status-dot"></span>
+            <span id="status-text">Awaiting Document</span>
+          </div>
+        </header>
+
+        <div class="workspace">
+          <!-- Terminal / Processing view -->
+          <div class="terminal" id="terminal" style="display: none;">
+            <div class="terminal-body" id="terminal-body">
+              <!-- Logs injected here -->
+            </div>
+          </div>
+
+          <!-- Document Viewer -->
+          <div class="results-viewer" id="results-viewer">
+            <div class="placeholder-text" id="placeholder-text">
+              Click "Run cGMP Compliance Scan" to analyze the batch record against FDA guidelines.
+            </div>
+            
+            <div class="scan-results" id="scan-results" style="display: none;">
+              <div class="alert-box error">
+                <div class="alert-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg></div>
+                <div class="alert-content">
+                  <h3>Deviation Detected: Step 4 (Granulation)</h3>
+                  <p>Temperature recorded as <strong>45.2°C</strong>. Master Batch Record specification limit is <strong>40°C - 45°C</strong>.</p>
+                  <p><em>Deviation: +0.2°C out of specification. Auto-flagging for manual QA review.</em></p>
+                </div>
+              </div>
+              
+              <div class="alert-box success" style="margin-top: 1rem;">
+                <div class="alert-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+                <div class="alert-content">
+                  <h3>Step 7 (Compression)</h3>
+                  <p>Hardness and friability metrics perfectly match cGMP limits. No deviations found.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>
