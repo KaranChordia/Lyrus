@@ -80,14 +80,20 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
 
 /* Floating Pill Navigation */
 .navbar {
-  position: fixed; top: 1rem; left: 50%; transform: translateX(-50%); width: 95%; max-width: 1200px; padding: 1rem 2rem;
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.2); width: 95%; max-width: 1200px; padding: 1.5rem 2rem;
   background-color: rgba(var(--bg-primary-rgb), 0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-color); border-radius: 50px; z-index: 100; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color); border-radius: 50px; z-index: 100; transition: background-color 0.4s ease, border-color 0.4s ease;
+  box-shadow: var(--shadow-pill);
 }
 [data-theme="light"] .navbar { background-color: rgba(255, 255, 255, 0.85); }
 [data-theme="dark"] .navbar { background-color: rgba(15, 23, 42, 0.85); }
-.navbar.nav-scrolled { padding: 0.6rem 2rem; width: 90%; max-width: 1000px; box-shadow: var(--shadow-pill); border-color: rgba(128, 128, 128, 0.2); }
+.navbar.nav-scrolled { position: fixed; top: 1rem; transform: translateX(-50%) scale(1); padding: 0.6rem 2rem; width: 90%; max-width: 1000px; box-shadow: var(--shadow-pill); border-color: rgba(128, 128, 128, 0.2); }
+
+/* Scrollytelling Intro */
+#intro-sequence { height: 400vh; position: relative; width: 100%; z-index: 50; }
+.intro-sticky { position: sticky; top: 0; height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.intro-text { position: absolute; font-size: clamp(2rem, 5vw, 4.5rem); font-weight: 700; text-align: center; color: var(--text-primary); opacity: 0; transform: translateY(50px) scale(0.9); transition: opacity 0.1s, transform 0.1s; max-width: 800px; line-height: 1.1; padding: 0 1rem; }
+.intro-text span { color: var(--brand-blue); }
 
 .nav-container { display: flex; justify-content: space-between; align-items: center; }
 .nav-links { list-style: none; display: flex; gap: 2.5rem; }
@@ -255,4 +261,9 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
 
   .footer-container { flex-direction: column; text-align: center; }
   .footer-links p { text-align: center; }
+
+  /* Scrollytelling Mobile Fix */
+  .intro-text { font-size: 2rem; }
+  .navbar { width: 90%; padding: 1rem; transform: translate(-50%, -50%) scale(1); }
+  .navbar.nav-scrolled { width: 95%; top: 0.5rem; padding: 0.5rem 1rem; }
 }

@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div class="bg-orbs"><div class="orb orb-1"></div></div>
     <div class="app-container">
       
       <!-- Sidebar -->
@@ -63,14 +64,13 @@
         </header>
 
         <div class="workspace">
-          <!-- Terminal / Processing view -->
-          <div class="terminal" id="terminal" style="display: none;">
-            <div class="terminal-header">
-              <span>Agent Execution Log</span>
-            </div>
-            <div class="terminal-body" id="terminal-body">
-              <!-- Logs injected here -->
-            </div>
+          <!-- Animated Stepper -->
+          <div class="process-stepper" id="stepper">
+            <div class="progress-line" id="progress-line"></div>
+            <div class="step" id="step-1"><div class="step-icon">1</div><span>Extract</span></div>
+            <div class="step" id="step-2"><div class="step-icon">2</div><span>Analyze</span></div>
+            <div class="step" id="step-3"><div class="step-icon">3</div><span>Validate</span></div>
+            <div class="step" id="step-4"><div class="step-icon">4</div><span>Synthesize</span></div>
           </div>
 
           <!-- Document Editor / Output view -->
@@ -80,8 +80,9 @@
               <button class="btn-export" disabled id="export-btn">Export PDF</button>
             </div>
             <div class="document-body">
-              <div class="placeholder-text" id="placeholder-text">
-                Configure parameters and click "Generate" to synthesize regulatory documentation from raw lab data.
+              <div class="placeholder-content" id="placeholder-text">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <p>System Ready. Waiting for Generation Request.</p>
               </div>
               <div class="typewriter-content" id="output-content">
                 <!-- AI text streams here -->

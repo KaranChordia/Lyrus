@@ -1,6 +1,12 @@
 const generateBtn = document.getElementById('generate-btn');
-const terminal = document.getElementById('terminal');
-const terminalBody = document.getElementById('terminal-body');
+const stepper = document.getElementById('stepper');
+const progressLine = document.getElementById('progress-line');
+const steps = [
+    document.getElementById('step-1'),
+    document.getElementById('step-2'),
+    document.getElementById('step-3'),
+    document.getElementById('step-4')
+];
 const documentViewer = document.getElementById('document-viewer');
 const placeholderText = document.getElementById('placeholder-text');
 const outputContent = document.getElementById('output-content');
@@ -56,29 +62,36 @@ async function runSimulation() {
     generateBtn.disabled = true;
     placeholderText.style.display = 'none';
     outputContent.innerHTML = '';
-    terminalBody.innerHTML = '';
-    terminal.style.display = 'block';
+    stepper.style.display = 'flex';
     exportBtn.disabled = true;
+    progressLine.style.width = '0%';
+    steps.forEach(s => { s.classList.remove('active'); s.classList.remove('completed'); });
     
     // Set Status
     statusDot.classList.add('active');
-    statusText.innerText = "Agent Processing...";
+    statusText.innerText = "Agent Processing Data...";
 
-    // 1. Simulate Terminal Logs
-    for (let i = 0; i < processingLogs.length; i++) {
-        const logLine = document.createElement('div');
-        logLine.className = 'log-line';
-        logLine.innerText = `> ${processingLogs[i]}`;
-        terminalBody.appendChild(logLine);
-        terminalBody.scrollTop = terminalBody.scrollHeight;
+    // 1. Simulate Stepper Progress
+    const phaseDelays = [1500, 2000, 1500, 1000]; // Duration for each step
+    
+    for (let i = 0; i < steps.length; i++) {
+        steps[i].classList.add('active');
         
-        // Random delay between logs for realism (400ms - 1200ms)
-        const delay = Math.floor(Math.random() * 800) + 400;
-        await sleep(delay);
+        // Update progress line width
+        const progressTarget = ((i) / (steps.length - 1)) * 100;
+        progressLine.style.width = `${progressTarget}%`;
+        
+        await sleep(phaseDelays[i]);
+        
+        steps[i].classList.remove('active');
+        steps[i].classList.add('completed');
     }
 
+    // Progress line full
+    progressLine.style.width = '100%';
+
     // 2. Simulate Typewriter Output
-    statusText.innerText = "Drafting Document...";
+    statusText.innerText = "Synthesizing Document...";
     
     // Create cursor element
     const cursor = document.createElement('span');

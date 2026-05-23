@@ -8,6 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div class="bg-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+    </div>
     <div class="app-container">
       <!-- Sidebar -->
       <aside class="sidebar">
@@ -59,11 +63,12 @@
         </header>
 
         <div class="workspace">
-          <!-- Terminal / Processing view -->
-          <div class="terminal" id="terminal" style="display: none;">
-            <div class="terminal-body" id="terminal-body">
-              <!-- Logs injected here -->
-            </div>
+          <!-- Animated Molecule Processing UI -->
+          <div class="molecule-container" id="molecule">
+            <div class="atom atom-1">C</div>
+            <div class="atom atom-center">O</div>
+            <div class="atom atom-2">H</div>
+            <div class="atom atom-3">N</div>
           </div>
 
           <!-- Prediction Results Viewer -->
