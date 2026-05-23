@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (progress >= start && progress < end) {
                     const subP = (progress - start) / (end - start); // 0 to 1
                     stepElem.style.opacity = Math.sin(subP * Math.PI);
-                    stepElem.style.transform = `translateY(${50 - subP*50}px) scale(${0.9 + subP*0.1})`;
+                    stepElem.style.transform = `translate(-50%, calc(-50% + ${50 - subP*50}px)) scale(${0.9 + subP*0.1})`;
                 } else {
                     stepElem.style.opacity = 0;
                 }
