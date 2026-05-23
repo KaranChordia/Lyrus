@@ -311,6 +311,8 @@ h1, h2, h3 { font-weight: 700; letter-spacing: -0.02em; }
   .divider { margin-inline: auto; }
   .infra-list { align-items: center; }
   .pipeline-stats { width: 100%; justify-content: space-around; flex-wrap: wrap;}
+  .market-card { width: 280px; padding: 1.5rem; }
+  .leadership-section { padding: 4rem 0; }
 }
 
 .mobile-menu-btn { display: none; }
