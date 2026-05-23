@@ -1,14 +1,30 @@
 :root {
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(0, 0, 0, 0.1);
+  --glass-border-hover: rgba(0, 0, 0, 0.2);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --brand-orange: #de4528;
+  --brand-blue: #0ea5e9;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --panel-bg: rgba(255, 255, 255, 0.7);
+  --input-bg: rgba(0,0,0,0.05);
+  --card-bg: rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] {
   --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.05);
   --glass-border-hover: rgba(255, 255, 255, 0.15);
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
-  --brand-orange: #de4528;
-  --brand-blue: #0ea5e9;
-  --success: #10b981;
-  --warning: #f59e0b;
+  --panel-bg: rgba(15, 23, 42, 0.6);
+  --input-bg: rgba(255,255,255,0.05);
+  --card-bg: rgba(255, 255, 255, 0.05);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
