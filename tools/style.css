@@ -42,6 +42,8 @@ body { font-family: 'Inter', sans-serif; background: var(--bg-gradient); color: 
 .topbar-left { display: flex; align-items: center; gap: 1rem; }
 .back-link { color: var(--text-muted); display: flex; align-items: center; transition: color 0.3s; text-decoration: none; }
 .back-link:hover { color: var(--brand-blue); }
+.logo { height: 35px; }
+[data-theme="dark"] .logo { filter: brightness(0) invert(1); }
 .brand-divider { width: 1px; height: 24px; background-color: var(--glass-border); }
 .system-name { font-weight: 600; color: var(--text-main); letter-spacing: 0.5px; }
 .topbar-right { display: flex; align-items: center; gap: 1rem; }
