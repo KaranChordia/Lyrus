@@ -15,8 +15,60 @@
       .blog-date { font-size: 0.85rem; color: var(--brand-orange); font-weight: 600; margin-bottom: 0.5rem; display: block; }
       .blog-title { font-size: 1.25rem; color: var(--brand-blue); margin-bottom: 0.75rem; line-height: 1.3; }
       .blog-excerpt { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
-      .read-more { font-weight: 600; color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; }
+      .read-more { font-weight: 600; color: var(--text-primary); text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; cursor: pointer; }
       .read-more:hover { color: var(--brand-blue); }
+
+      /* Article Detail Modal */
+      .article-modal {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background-color: rgba(15, 23, 42, 0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        z-index: 1100; display: flex; align-items: center; justify-content: center;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+      }
+      .article-modal.active {
+        opacity: 1; pointer-events: all;
+      }
+      .article-modal-content {
+        width: 90%; max-width: 750px; max-height: 85vh; overflow-y: auto;
+        background: var(--bg-primary); border: 1px solid var(--border-color);
+        border-radius: 16px; box-shadow: var(--shadow-lg); padding: 2.5rem;
+        position: relative; transform: scale(0.95); transition: transform 0.3s ease;
+      }
+      [data-theme="dark"] .article-modal-content {
+        background: var(--bg-secondary);
+      }
+      .article-modal.active .article-modal-content {
+        transform: scale(1);
+      }
+      .article-modal-close {
+        position: absolute; top: 1.25rem; right: 1.25rem; background: transparent;
+        border: none; color: var(--text-secondary); cursor: pointer; padding: 0.5rem;
+        border-radius: 50%; display: flex; transition: all 0.2s ease;
+      }
+      .article-modal-close:hover {
+        background: var(--bg-tertiary); color: var(--text-primary);
+      }
+      .modal-article-date {
+        font-size: 0.9rem; color: var(--brand-orange); font-weight: 600; margin-bottom: 0.75rem; display: block;
+      }
+      .modal-article-title {
+        font-size: 1.75rem; color: var(--brand-blue); margin-bottom: 1.5rem; line-height: 1.25; font-weight: 700;
+      }
+      .modal-article-body {
+        color: var(--text-secondary); line-height: 1.75; font-size: 1.05rem;
+      }
+      .modal-article-body p {
+        margin-bottom: 1.25rem;
+      }
+      .modal-article-body h3 {
+        color: var(--text-primary); margin: 1.75rem 0 0.75rem 0; font-size: 1.3rem; font-weight: 600;
+      }
+      .modal-article-body ul {
+        margin-bottom: 1.25rem; padding-left: 1.5rem;
+      }
+      .modal-article-body li {
+        margin-bottom: 0.5rem;
+      }
     </style>
   </head>
   <body>
@@ -33,6 +85,7 @@
           <li><a href="pipeline.html">Pipeline</a></li>
           <li><a href="blogs.html" class="active">News</a></li>
           <li><a href="docs.html">Docs</a></li>
+          <li><a href="strategy.html">Strategy</a></li>
           <li class="show-mobile-only"><a href="#" class="btn-primary" style="width: 100%; text-align: center;">Partner With Us</a></li>
         </ul>
         <div class="nav-actions">
@@ -60,10 +113,40 @@
           <article class="blog-card hidden-scroll delay-1">
             <div class="blog-img"></div>
             <div class="blog-content">
+              <span class="blog-date">May 15, 2026</span>
+              <h2 class="blog-title">Pioneering Non-Antibiotic UTI Prophylaxis: Methenamine Hippurate USP</h2>
+              <p class="blog-excerpt">Exploring Lyrus's recent FDA approval for generic Methenamine Hippurate and how non-antibiotic suppressive agents are key to addressing the global antimicrobial resistance (AMR) crisis.</p>
+              <a class="read-more" data-article-id="uti_prophylaxis">Read Full Story <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            </div>
+          </article>
+
+          <article class="blog-card hidden-scroll delay-2">
+            <div class="blog-img"></div>
+            <div class="blog-content">
+              <span class="blog-date">April 22, 2026</span>
+              <h2 class="blog-title">Overcoming BCS Class II/IV Bioavailability Barriers via Nanonization</h2>
+              <p class="blog-excerpt">A technical look into Lyrus's formulation science capabilities, achieving a stable 40-157 nm particle range using Brookhaven Dynamic Light Scattering Nano analyzers.</p>
+              <a class="read-more" data-article-id="nanonization_bioavailability">Read Full Story <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            </div>
+          </article>
+
+          <article class="blog-card hidden-scroll delay-3">
+            <div class="blog-img"></div>
+            <div class="blog-content">
+              <span class="blog-date">April 02, 2026</span>
+              <h2 class="blog-title">Scaling Complex Generics: The Power of Asset-Light Global Alliances</h2>
+              <p class="blog-excerpt">How Lyrus leverages an agile B2B model and a network of 11 FDA/MHRA/TGA approved CMOs to deliver complex drug formulations globally without heavy overhead.</p>
+              <a class="read-more" data-article-id="asset_light_alliances">Read Full Story <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+            </div>
+          </article>
+
+          <article class="blog-card hidden-scroll delay-1">
+            <div class="blog-img"></div>
+            <div class="blog-content">
               <span class="blog-date">March 12, 2026</span>
               <h2 class="blog-title">Lyrus Secures FDA Approval for Methenamine Hippurate</h2>
               <p class="blog-excerpt">Our dedicated R&D team successfully achieved a first-cycle FDA approval for our generic Methenamine Hippurate formulation, marking a significant milestone in our US expansion strategy.</p>
-              <a href="#" class="read-more">Read Full Story <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+              <a class="read-more" data-article-id="fda_approval">Read Full Story <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </article>
 
@@ -73,7 +156,7 @@
               <span class="blog-date">February 05, 2026</span>
               <h2 class="blog-title">Strategic Partnership with Noumed Life Sciences</h2>
               <p class="blog-excerpt">We are thrilled to announce a comprehensive co-development partnership with Noumed Life Sciences (UK) to bring 5 complex generic formulations to the European market by Q4.</p>
-              <a href="#" class="read-more">Read Full Story <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+              <a class="read-more" data-article-id="noumed_partnership">Read Full Story <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </article>
 
@@ -83,7 +166,7 @@
               <span class="blog-date">January 18, 2026</span>
               <h2 class="blog-title">AI Integration in Regulatory Affairs</h2>
               <p class="blog-excerpt">Lyrus is spearheading a digital transformation initiative, leveraging custom Artificial Intelligence agents to automate the drafting of eCTD Module 3 documents, reducing submission times by 40%.</p>
-              <a href="#" class="read-more">Read Full Story <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+              <a class="read-more" data-article-id="ai_regulatory">Read Full Story <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
             </div>
           </article>
 
@@ -99,12 +182,132 @@
         </div>
         <div class="footer-links">
           <p>Bengaluru, India • Uxbridge, UK • Delaware, USA</p>
-          <p><a href="../../tools/index.html" style="color: var(--text-muted); text-decoration: underline; font-size: 0.85rem;">Internal Tools Portal (Staff Only)</a></p>
+          <p><a href="strategy.html" style="color: var(--text-muted); text-decoration: underline; font-size: 0.85rem; margin-right: 1rem;">Content Strategy</a> <a href="../../tools/index.html" style="color: var(--text-muted); text-decoration: underline; font-size: 0.85rem;">Internal Tools Portal (Staff Only)</a></p>
           <p>&copy; 2026 Lyrus Life Sciences. All rights reserved.</p>
         </div>
       </div>
     </footer>
 
+    <!-- Article Detail Modal -->
+    <div id="article-modal" class="article-modal">
+      <div class="article-modal-content">
+        <button id="modal-close-btn" class="article-modal-close" aria-label="Close article">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <span class="modal-article-date" id="modal-date"></span>
+        <h2 class="modal-article-title" id="modal-title"></h2>
+        <div class="modal-article-body" id="modal-body"></div>
+      </div>
+    </div>
+
     <script type="module" src="./main.js"></script>
+    <script>
+      const articles = {
+        uti_prophylaxis: {
+          date: "May 15, 2026",
+          title: "Pioneering Non-Antibiotic UTI Prophylaxis: Methenamine Hippurate USP",
+          body: `
+            <p>Urinary tract infections (UTIs) represent one of the most common bacterial infections worldwide, creating a massive clinical burden. Traditionally, patients experiencing recurrent UTIs have been maintained on low-dose daily antibiotic prophylaxis. However, this approach has significantly contributed to the rise of global antimicrobial resistance (AMR), rendering standard antibiotics ineffective.</p>
+            <p>Lyrus's recent FDA approval for Methenamine Hippurate USP, 1g, represents a major milestone in providing a non-antibiotic alternative. Methenamine is a prodrug that is converted in acidic urine to formaldehyde. Formaldehyde is non-specifically bactericidal to almost all pathogens, preventing them from developing resistance. This unique mechanism makes it an ideal suppressive therapy for long-term clinical use.</p>
+            <h3>Phase IV Observational Registry:</h3>
+            <p>To further support global clinical adoption, Lyrus has initiated a multi-center Phase IV post-marketing observational study. This study is tracking real-world safety, compliance, and efficacy outcomes in patients transitioning from daily antibiotics to Methenamine Hippurate, providing robust data to support its clinical prestige.</p>
+          `
+        },
+        nanonization_bioavailability: {
+          date: "April 22, 2026",
+          title: "Overcoming BCS Class II/IV Bioavailability Barriers via Advanced Nanonization",
+          body: `
+            <p>A significant percentage of newly discovered chemical entities and existing active pharmaceutical ingredients are classified under the Biopharmaceutics Classification System (BCS) as Class II or Class IV, meaning they possess poor aqueous solubility. Poor solubility severely restricts oral absorption and systemic bioavailability, often stalling drug development.</p>
+            <p>At our 75,000 sq ft R&D facility in Hoskote, Lyrus scientists have developed advanced mechanical nanonization and solvent-engineering processes to address this barrier. We successfully reduce hydrophobic crystalline powders (such as Turmeric oleoresin and curcuminoids) to an ultra-fine nanoparticle range of 40 to 157 nanometers.</p>
+            <h3>Validating Nanoparticle Stability:</h3>
+            <p>Reducing particle size increases surface area exponentially, causing a massive surge in dissolution rates. To ensure these nanoparticles do not agglomerate and remain thermodynamically stable over their shelf life, our analytical labs utilize Brookhaven Nano particle size analyzers. Furthermore, our proprietary technology (protected under US Patent US 12318425 B2) achieves this stabilization without harsh pH buffering agents, eliminating gastrointestinal irritation for patients.</p>
+          `
+        },
+        asset_light_alliances: {
+          date: "April 02, 2026",
+          title: "Scaling Complex Generics: The Power of Asset-Light Global Alliances",
+          body: `
+            <p>Traditional pharmaceutical companies spend hundreds of millions of dollars building and maintaining rigid, high-capacity manufacturing facilities. In contrast, Lyrus Life Sciences operates an agile, asset-light business model that allows us to focus entirely on our core strength: high-complexity formulation R&D and dossier development.</p>
+            <p>While we maintain an in-house cGMP pilot plant at Hoskote to produce validation and exhibit batches, our commercial manufacturing is outsourced to a strategic network of 11 qualified Contract Manufacturing Organizations (CMOs) globally.</p>
+            <h3>A Decoupled and Resilient Supply Chain:</h3>
+            <p>Every CMO in our network holds approvals from the US FDA, UK MHRA, EU GMP, and Australian TGA. This model gives us absolute flexibility; if a product requires specialized packaging (such as airless topical pumps) or delicate manufacturing conditions (like sterile injectables), we route it to the optimal partner. By combining this model with strategic co-development alliances with Akums and the Noumed Group, we successfully market over 60 commercial products across Europe, South Africa, and ANZ without the overhead of heavy manufacturing infrastructure.</p>
+          `
+        },
+        fda_approval: {
+          date: "March 12, 2026",
+          title: "Lyrus Secures FDA Approval for Methenamine Hippurate",
+          body: `
+            <p>Lyrus Life Sciences is proud to announce that the United States Food and Drug Administration (US FDA) has granted first-cycle approval for our Abbreviated New Drug Application (ANDA) for Methenamine Hippurate Tablets USP, 1g.</p>
+            <p>Methenamine Hippurate is a critical urological treatment used for the prophylaxis and suppression of frequently recurring urinary tract infections (UTIs). Securing a first-cycle approval validates our rigorous analytical methodology, formulation science expertise, and our Hoskote facility's regulatory standards.</p>
+            <h3>Key Strategic Value:</h3>
+            <ul>
+              <li><strong>AB-Rated Substitutability:</strong> The formulation is fully substitutable with the reference listed drug, Hiprex®, opening immediate commercial channels in the North American healthcare market.</li>
+              <li><strong>Manufacturing Synergy:</strong> Commercial manufacturing will be carried out at our partner facility in India, while commercial distribution in the US is licensed exclusively to Jubilant Cadista (USA).</li>
+              <li><strong>First-Cycle Success:</strong> Obtaining approval on the first review cycle is a rare achievement for complex generics, showing the exceptional quality of our regulatory affairs team and our comprehensive dossier preparation.</li>
+            </ul>
+          `
+        },
+        noumed_partnership: {
+          date: "February 05, 2026",
+          title: "Strategic Partnership with Noumed Life Sciences",
+          body: `
+            <p>We are thrilled to announce a comprehensive co-development and supply partnership with the Noumed Group (UK) to bring five complex generic formulations to the UK and European markets by Q4.</p>
+            <p>Noumed Life Sciences is a premier generic pharmaceutical distributor and manufacturer in the UK and Australia. Under the terms of the agreement, Lyrus will handle the formulation development, analytical testing, and compile the Marketing Authorisations (MAs), while Noumed will lead commercialization and branding.</p>
+            <h3>Deepening B2B Relationships:</h3>
+            <p>This partnership is a core component of Lyrus's out-licensing model, which focuses on out-licensing developed dossiers to trusted commercial networks. The Noumed relationship remains a keystone of our European export strategy, capturing substantial market share in cardiovascular, gastrointestinal, and pain management therapeutic categories.</p>
+          `
+        },
+        ai_regulatory: {
+          date: "January 18, 2026",
+          title: "AI Integration in Regulatory Affairs",
+          body: `
+            <p>As part of our commitment to operational efficiency and digital transformation, Lyrus is spearheading a new initiative to integrate advanced artificial intelligence agents into our Regulatory Affairs division.</p>
+            <p>By leveraging custom Natural Language Processing (NLP) models trained on ICH and eCTD submission guidelines, our regulatory team is automating the initial drafting of Chemistry, Manufacturing, and Controls (CMC) documentation (Module 3 of the eCTD dossier).</p>
+            <h3>Projected Efficiency Gains:</h3>
+            <ul>
+              <li><strong>40% Reduction in submission drafting time:</strong> Shrinking the time from formulation completion to filing.</li>
+              <li><strong>Minimized Human Error:</strong> Automated cross-referencing between lab notebooks, chromatography outputs, and final text tables.</li>
+              <li><strong>Cash Flow Velocity:</strong> Accelerating dossier compilation directly speeds up milestone billing triggers, helping reduce our Gross Current Asset (GCA) cycle.</li>
+            </ul>
+          `
+        }
+      };
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('article-modal');
+        const modalDate = document.getElementById('modal-date');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBody = document.getElementById('modal-body');
+        const closeBtn = document.getElementById('modal-close-btn');
+
+        document.querySelectorAll('.read-more').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const id = btn.getAttribute('data-article-id');
+            const article = articles[id];
+            if (article) {
+              modalDate.textContent = article.date;
+              modalTitle.textContent = article.title;
+              modalBody.innerHTML = article.body;
+              modal.classList.add('active');
+              document.body.style.overflow = 'hidden';
+            }
+          });
+        });
+
+        const closeModal = () => {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        };
+
+        closeBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        });
+      });
+    </script>
   </body>
 </html>
